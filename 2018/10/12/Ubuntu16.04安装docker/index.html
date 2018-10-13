@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="昊&#39;blog">
 <meta property="og:description" content="本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-13T03:13:17.536Z">
+<meta property="og:updated_time" content="2018-10-13T06:21:28.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu16.04安装docker">
 <meta name="twitter:description" content="本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。">
@@ -401,6 +401,12 @@
 </li>
 </ul>
 <p>这个命令下载一个测试图片并且在容器(container)中运行，然后容器container运行，打印出相关信息，说明安装成功</p>
+<h2 id="创建docker-group"><a href="#创建docker-group" class="headerlink" title="创建docker group"></a>创建docker group</h2><p>docker进程(daemon)绑定在Unix套接字(socket)，而不是TCP端口(port)，由于Unix默认socket权限归root用户所有，其他用户可以通过sudo访问. 由此, docker进程通常使用root用户运行.</p>
+<p>为了避免每次使用docker命令都不得不使用sudo, 创建名为docker的Unix group并add users to it. 当docker daemon 开始,docker group就会拥有Unix socket 的读写权限（read/writable）.</p>
+<p>为docker group 添加用户user<br>1.使用具有sudo权限的用户登录Ubuntu<br>2.创建docker group<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br></pre></td></tr></table></figure></p>
+<p>3.添加登录用户到docker group用户组中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a <span class="variable">$USER</span> docker</span><br></pre></td></tr></table></figure></p>
+<p>4.更新用户组<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newgrp docker</span><br></pre></td></tr></table></figure></p>
+<p>5.测试docker命令不用sudo是否可以正常使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -573,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker安装"><span class="nav-text">docker安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证Docker"><span class="nav-text">验证Docker</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker安装"><span class="nav-text">docker安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证Docker"><span class="nav-text">验证Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建docker-group"><span class="nav-text">创建docker group</span></a></li></ol></div>
             
 
           </div>
