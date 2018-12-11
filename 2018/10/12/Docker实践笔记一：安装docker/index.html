@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Ubuntu," />
+  <meta name="keywords" content="Ubuntu,docker," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="描述Ubuntu 16.04 在改用NVIDIA的专有显卡驱动后，开机黑屏">
-<meta name="keywords" content="Ubuntu">
+<meta name="description" content="本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。">
+<meta name="keywords" content="Ubuntu,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu16.04 开机黑屏">
-<meta property="og:url" content="http://yoursite.com/2018/09/11/Ubuntu16.04 开机黑屏/index.html">
+<meta property="og:title" content="Docker实践笔记一：安装docker">
+<meta property="og:url" content="http://yoursite.com/2018/10/12/Docker实践笔记一：安装docker/index.html">
 <meta property="og:site_name" content="昊&#39;blog">
-<meta property="og:description" content="描述Ubuntu 16.04 在改用NVIDIA的专有显卡驱动后，开机黑屏">
+<meta property="og:description" content="本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-13T04:20:25.232Z">
+<meta property="og:updated_time" content="2018-11-04T04:20:40.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu16.04 开机黑屏">
-<meta name="twitter:description" content="描述Ubuntu 16.04 在改用NVIDIA的专有显卡驱动后，开机黑屏">
+<meta name="twitter:title" content="Docker实践笔记一：安装docker">
+<meta name="twitter:description" content="本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/11/Ubuntu16.04 开机黑屏/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/12/Docker实践笔记一：安装docker/"/>
 
 
 
 
 
-  <title>Ubuntu16.04 开机黑屏 | 昊'blog</title>
+  <title>Docker实践笔记一：安装docker | 昊'blog</title>
   
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/Ubuntu16.04 开机黑屏/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/Docker实践笔记一：安装docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨昊">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu16.04 开机黑屏</h1>
+          <h1 class="post-title" itemprop="name headline">Docker实践笔记一：安装docker</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-11T10:49:32+08:00">
-                2018-09-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T20:34:39+08:00">
+                2018-10-12
               </time>
             
 
@@ -317,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
                   </a>
                 </span>
 
@@ -354,9 +354,59 @@
       
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>Ubuntu 16.04 在改用NVIDIA的专有显卡驱动后，开机黑屏<br><a id="more"></a></p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>桌面在运行时，显卡驱动不能安装</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>开机时按Ctrl+Alt+F1进入tty命令行模式，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge nvidia*</span><br><span class="line">sudo apt-get install nvidia-current-updates-dve</span><br></pre></td></tr></table></figure></p>
+        <p>本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。<br><a id="more"></a></p>
+<p>针对Ubuntu Trusty, Wily, and Xenial，推荐安装<code>linux-image-extra-*</code>内核包，<code>linux-image-extra-*</code>包允许你使用aufs存储驱动</p>
+<ul>
+<li><p>更新包管理器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装推荐包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-image-extra-$(uname -r) \</span><br><span class="line">    linux-image-extra-virtual</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h2><p>1.卸载旧版本docker</p>
+<ul>
+<li>由于apt官方库里的docker版本可能比较旧，所以先卸载可能存在的旧版本<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge docker docker-engine docker.io</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2.更新系统软件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
+<p>3.安装依赖包，使apt可以通过HTTPS使用存储库(repository)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apt-transport-https ca-certificates \</span><br><span class="line">    curl software-properties-common</span><br></pre></td></tr></table></figure></p>
+<p>4.添加Docker官方GPG密钥<br>执行该命令时，如遇到长时间没有响应说明网络连接不到docker网站，需要使用代理进行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \</span><br><span class="line">    sudo apt-key add -</span><br></pre></td></tr></table></figure></p>
+<p>显示OK,表示添加成功.</p>
+<p>5.添加仓库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">   <span class="string">"deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span></span><br><span class="line"><span class="string">   <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">   stable"</span></span><br></pre></td></tr></table></figure></p>
+<p>6.再次更新apt索引<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
+<p>7.安装docker</p>
+<ul>
+<li><p>查看可用版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache madison docker-ce</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装指定版本 <code>&lt;VERSION&gt;</code>为版本号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce=&lt;VERSION&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装最新版Docker CE</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>8.查看docker版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure></p>
+<h2 id="验证Docker"><a href="#验证Docker" class="headerlink" title="验证Docker"></a>验证Docker</h2><p>显示出版本信息，即安装成功。</p>
+<ul>
+<li><p>查看docker服务是否启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若未启动，则启动docker服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确认docker已被正确安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个命令下载一个测试图片并且在容器(container)中运行，然后容器container运行，打印出相关信息，说明安装成功</p>
+<h2 id="创建docker-group"><a href="#创建docker-group" class="headerlink" title="创建docker group"></a>创建docker group</h2><p>docker进程(daemon)绑定在Unix套接字(socket)，而不是TCP端口(port)，由于Unix默认socket权限归root用户所有，其他用户可以通过sudo访问. 由此, docker进程通常使用root用户运行.</p>
+<p>为了避免每次使用docker命令都不得不使用sudo, 创建名为docker的Unix group并add users to it. 当docker daemon 开始,docker group就会拥有Unix socket 的读写权限（read/writable）.</p>
+<p>为docker group 添加用户user<br>1.使用具有sudo权限的用户登录Ubuntu<br>2.创建docker group<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br></pre></td></tr></table></figure></p>
+<p>3.添加登录用户到docker group用户组中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a <span class="variable">$USER</span> docker</span><br></pre></td></tr></table></figure></p>
+<p>4.更新用户组<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newgrp docker</span><br></pre></td></tr></table></figure></p>
+<p>5.测试docker命令不用sudo是否可以正常使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -376,6 +426,8 @@
           
             <a href="/tags/Ubuntu/" rel="tag"> <i class="fa fa-tag"></i>Ubuntu</a>
           
+            <a href="/tags/docker/" rel="tag"> <i class="fa fa-tag"></i>docker</a>
+          
         </div>
       
 
@@ -387,14 +439,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/10/01/Docker命令/" rel="next" title="Docker命令">
+                <i class="fa fa-chevron-left"></i> Docker命令
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/01/Docker命令/" rel="prev" title="Docker命令">
-                Docker命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/14/Docker实践笔记/" rel="prev" title="Docker实践笔记二">
+                Docker实践笔记二 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -527,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-text">解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker安装"><span class="nav-text">docker安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证Docker"><span class="nav-text">验证Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建docker-group"><span class="nav-text">创建docker group</span></a></li></ol></div>
             
 
           </div>
