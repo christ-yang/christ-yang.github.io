@@ -83,11 +83,11 @@
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker命令使用详解">
-<meta property="og:url" content="http://yoursite.com/2018/10/01/Docker命令/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/10/01/Docker命令使用详解/index.html">
 <meta property="og:site_name" content="昊&#39;blog">
 <meta property="og:description" content="docker常用命令整理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-04T16:31:13.179Z">
+<meta property="og:updated_time" content="2019-01-04T15:29:12.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker命令使用详解">
 <meta name="twitter:description" content="docker常用命令整理">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/01/Docker命令/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/01/Docker命令使用详解/"/>
 
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/Docker命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/Docker命令使用详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨昊">
@@ -355,40 +355,44 @@
 
       
         <p>docker常用命令整理<br><a id="more"></a></p>
-<h1 id="docker-容器生命周期管理"><a href="#docker-容器生命周期管理" class="headerlink" title="docker 容器生命周期管理"></a>docker 容器生命周期管理</h1><h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p><strong>docker run:创建一个新容器并运行</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql2 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=密码 -d mysql:5.7</span><br></pre></td></tr></table></figure></p>
-<p>以mysql:5.7镜像启动一个容器，指定容器名称为mysql2 映射端口号设置密码，并在后台运行</p>
-<p>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项</span><br><span class="line">-d: 后台运行容器，并返回容器ID</span><br><span class="line">-i: 以交互模式运行容器，通常与 -t 同时使用</span><br><span class="line">-p: 端口映射，格式为：主机(宿主)端口:容器端口</span><br><span class="line">-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用</span><br><span class="line">--name=&quot;nginx-lb&quot;: 为容器指定一个名称</span><br><span class="line">--dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致</span><br><span class="line">--dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致</span><br><span class="line">-h &quot;mars&quot;: 指定容器的hostname</span><br><span class="line">-e username=&quot;ritchie&quot;: 设置环境变量</span><br><span class="line">--env-file=[]: 从指定文件读入环境变量</span><br><span class="line">--cpuset=&quot;0-2&quot; or --cpuset=&quot;0,1,2&quot;: 绑定容器到指定CPU运行</span><br><span class="line">-m :设置容器使用内存最大值</span><br><span class="line">--net=&quot;bridge&quot;: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型</span><br><span class="line">--link=[]: 添加链接到另一个容器</span><br><span class="line">--expose=[]: 开放一个端口或一组端口</span><br></pre></td></tr></table></figure></p>
-<h2 id="docker-start-stop-restart"><a href="#docker-start-stop-restart" class="headerlink" title="docker start/stop/restart"></a>docker start/stop/restart</h2><p><strong>docker start/stop/restart :启动、停止或重启一个或多个容器</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start <span class="variable">$container_id</span></span><br></pre></td></tr></table></figure></p>
-<p>启动一个ID为$container_id的容器</p>
-<p>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-a, --attach=false：启动一个容器并打印输出结果和错误</span><br><span class="line">-i, --interactive=false： 启动一个容器并进入交互模式</span><br><span class="line">-t, --time=10 ：停止或者重启容器的超时时间（秒），超时后系统将杀死进程。</span><br></pre></td></tr></table></figure></p>
-<h2 id="docker-kill"><a href="#docker-kill" class="headerlink" title="docker kill"></a>docker kill</h2><p><strong>docker kill :杀掉一个运行中的容器</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">kill</span> -s KILL 94c6b3c3f04a</span><br></pre></td></tr></table></figure></p>
-<p>杀死一个ID为 94c6b3c3f04a 的容器，并向容器中发送KILL信号</p>
-<p>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-s, --signal=KILL  ：自定义发送至容器的信号</span><br></pre></td></tr></table></figure></p>
-<h2 id="docker-rm"><a href="#docker-rm" class="headerlink" title="docker rm"></a>docker rm</h2><p><strong> docker rm ：删除一个或多少容器 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rm harrysun/lnmp</span><br><span class="line">docker rm -l webapp/redis</span><br></pre></td></tr></table></figure></p>
-<p>移除 harrysun/lnmp 的本地容器和移除 webapp/redis 容器的网络连接</p>
-<p>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f, --force=false ：强行移除该容器，即使其正在运行</span><br><span class="line">-l, --link=false ：移除容器间的网络连接，而非容器本身</span><br><span class="line">-v, --volumes=false ：移除与容器关联的空间</span><br></pre></td></tr></table></figure></p>
-<h2 id="docker-pause-unpause"><a href="#docker-pause-unpause" class="headerlink" title="docker pause/unpause"></a>docker pause/unpause</h2><p><strong>docker pause/unpause:暂停/恢复容器中的所有进程</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pause CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure></p>
-<h2 id="docker-create"><a href="#docker-create" class="headerlink" title="docker create"></a>docker create</h2><p><strong>docker create:创建一个新容器但不启动它</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker create  --name myrunoob  nginx:latest</span><br></pre></td></tr></table></figure></p>
-<p>使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob</p>
-<h2 id="docker-exec"><a href="#docker-exec" class="headerlink" title="docker exec"></a>docker exec</h2><p><strong> docker exec:在运行的容器中执行命令 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql2 bash</span><br></pre></td></tr></table></figure></p>
-<p>以交互模式进入容器，并分配一个伪终端</p>
-<p>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-d :分离模式: 在后台运行</span><br><span class="line">-i :即使没有附加也保持STDIN 打开</span><br><span class="line">-t :分配一个伪终端</span><br></pre></td></tr></table></figure></p>
-<h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="docker-ps"><a href="#docker-ps" class="headerlink" title="docker ps"></a>docker ps</h2><p><strong> docker ps:列出容器 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure></p>
-<p>列出所有容器</p>
-<p>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-a :显示所有的容器，包括未运行的。</span><br><span class="line">-f :根据条件过滤显示的内容。</span><br><span class="line">--format :指定返回值的模板文件。</span><br><span class="line">-l :显示最近创建的容器。</span><br><span class="line">-n :列出最近创建的n个容器。</span><br><span class="line">--no-trunc :不截断输出。</span><br><span class="line">-q :静默模式，只显示容器编号。</span><br><span class="line">-s :显示总的文件大小。</span><br></pre></td></tr></table></figure></p>
-<h2 id="docker-inspect"><a href="#docker-inspect" class="headerlink" title="docker inspect"></a>docker inspect</h2><p><strong> docker inspect:获取容器/镜像的元数据 </strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect mysql:5.6</span><br></pre></td></tr></table></figure></p>
-<p>获取镜像mysql:5.6的元信息</p>
+<h1 id="docker-容器生命周期"><a href="#docker-容器生命周期" class="headerlink" title="docker 容器生命周期"></a>docker 容器生命周期</h1><h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><p><strong>docker run:创建一个新容器并运行</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run</span><br></pre></td></tr></table></figure></p>
+<p>OPTIONS说明：<br>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</p>
+<p>-d: 后台运行容器，并返回容器ID；</p>
+<p>-i: 以交互模式运行容器，通常与 -t 同时使用；</p>
+<p>-p: 端口映射，格式为：主机(宿主)端口:容器端口</p>
+<p>-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</p>
+<p>–name=”nginx-lb”: 为容器指定一个名称；</p>
+<p>–dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；</p>
+<p>–dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；</p>
+<p>-h “mars”: 指定容器的hostname；</p>
+<p>-e username=”ritchie”: 设置环境变量；</p>
+<p>–env-file=[]: 从指定文件读入环境变量；</p>
+<p>–cpuset=”0-2” or –cpuset=”0,1,2”: 绑定容器到指定CPU运行；</p>
+<p>-m :设置容器使用内存最大值；</p>
+<p>–net=”bridge”: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；</p>
+<p>–link=[]: 添加链接到另一个容器；</p>
+<p>–expose=[]: 开放一个端口或一组端口；</p>
+<h2 id="start-stop-restart-命令"><a href="#start-stop-restart-命令" class="headerlink" title="start/stop/restart 命令"></a>start/stop/restart 命令</h2><p><strong>docker start :启动一个或多个已经被停止的容器</strong><br><strong>docker stop :停止一个运行中的容器</strong><br><strong>docker restart :重启容器</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure>
+<p>实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop <span class="variable">$container_id</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Docker-kill-命令"><a href="#Docker-kill-命令" class="headerlink" title="Docker kill 命令"></a>Docker kill 命令</h2><p><strong>docker kill :杀掉一个运行中的容器</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">kill</span> [OPTIONS] CONTAINER [CONTAINER...]</span><br></pre></td></tr></table></figure></p>
+<p>OPTIONS说明：</p>
+<ul>
+<li>查看启动的容器<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参数：-a 查看所有容器</p>
+<h1 id="docker-查看ip"><a href="#docker-查看ip" class="headerlink" title="docker 查看ip"></a>docker 查看ip</h1><ul>
+<li><p>方法一</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 容器ID | grep IPAdress</span><br></pre></td></tr></table></figure>
-<p>查看容器ip</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f=<span class="string">'&#123;&#123;.Name&#125;&#125;'</span> $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-<p>查看容器名称</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f=<span class="string">'&#123;&#123;.NetworkSetting.IPAddress&#125;&#125;'</span> mymysql</span><br></pre></td></tr></table></figure>
-<p>查看容器mymysql的ip</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f=<span class="string">'&#123;&#123;.Name&#125;&#125; &#123;&#123;.NetworkSettings.IPAddress&#125;&#125; &#123;&#123;.HostConfig.PortBindings&#125;&#125;'</span> $(docker ps -aq)</span><br></pre></td></tr></table></figure>
-<p>列出所有容器对应的名称，端口以及ip</p>
-<h2 id="docker-top"><a href="#docker-top" class="headerlink" title="docker top"></a>docker top</h2><p><strong>docker top:查看容器中运行的进程信息，支持 ps 命令参数</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top [OPTIONS] CONTAINER [ps OPTIONS]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top mymysql</span><br></pre></td></tr></table></figure>
-<p>查询容器mymysql的进程信息</p>
+</li>
+<li><p>方法二<br>查看docker name:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker inspect -f=<span class="string">'&#123;&#123;.Name&#125;&#125;'</span> $(sudo docker ps -a -q)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>查看docker ip:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker inspect -f=<span class="string">'&#123;&#123;.NetworkSetting.IPAddress&#125;&#125;'</span> $(sudo docker ps -a -q)</span><br></pre></td></tr></table></figure></p>
+<p>综上，可以写出以下脚本列出所有容器对应的名称，端口以及ip<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f=<span class="string">'&#123;&#123;.Name&#125;&#125; &#123;&#123;.NetworkSettings.IPAddress&#125;&#125; &#123;&#123;.HostConfig.PortBindings&#125;&#125;'</span> $(docker ps -aq)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -419,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/01/Docker命令使用详解/" rel="next" title="Docker命令使用详解">
-                <i class="fa fa-chevron-left"></i> Docker命令使用详解
+              <a href="/2018/09/11/Ubuntu16.04 开机黑屏/" rel="next" title="Ubuntu16.04 开机黑屏">
+                <i class="fa fa-chevron-left"></i> Ubuntu16.04 开机黑屏
               </a>
             
           </div>
@@ -429,8 +433,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/12/Docker实践笔记一：安装docker/" rel="prev" title="Docker实践笔记一：安装docker">
-                Docker实践笔记一：安装docker <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/01/Docker命令/" rel="prev" title="Docker命令使用详解">
+                Docker命令使用详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -563,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-容器生命周期管理"><span class="nav-text">docker 容器生命周期管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-run"><span class="nav-text">docker run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-start-stop-restart"><span class="nav-text">docker start/stop/restart</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-kill"><span class="nav-text">docker kill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-rm"><span class="nav-text">docker rm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-pause-unpause"><span class="nav-text">docker pause/unpause</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-create"><span class="nav-text">docker create</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-exec"><span class="nav-text">docker exec</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#容器操作"><span class="nav-text">容器操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-ps"><span class="nav-text">docker ps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-inspect"><span class="nav-text">docker inspect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-top"><span class="nav-text">docker top</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-容器生命周期"><span class="nav-text">docker 容器生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动容器"><span class="nav-text">启动容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#start-stop-restart-命令"><span class="nav-text">start/stop/restart 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-kill-命令"><span class="nav-text">Docker kill 命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-查看ip"><span class="nav-text">docker 查看ip</span></a></li></ol></div>
             
 
           </div>
