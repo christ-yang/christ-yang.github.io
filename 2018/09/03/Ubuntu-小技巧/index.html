@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Ubuntu,docker," />
+  <meta name="keywords" content="Ubuntu," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。">
-<meta name="keywords" content="Ubuntu,docker">
+<meta name="description" content="Ubuntu实用小技巧">
+<meta name="keywords" content="Ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu16.04安装docker">
-<meta property="og:url" content="http://yoursite.com/2018/10/12/Ubuntu16.04安装docker/index.html">
+<meta property="og:title" content="Ubuntu 小技巧">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/Ubuntu-小技巧/index.html">
 <meta property="og:site_name" content="昊&#39;blog">
-<meta property="og:description" content="本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。">
+<meta property="og:description" content="Ubuntu实用小技巧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-13T06:21:28.528Z">
+<meta property="og:updated_time" content="2019-02-18T13:54:02.194Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu16.04安装docker">
-<meta name="twitter:description" content="本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。">
+<meta name="twitter:title" content="Ubuntu 小技巧">
+<meta name="twitter:description" content="Ubuntu实用小技巧">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/12/Ubuntu16.04安装docker/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/03/Ubuntu-小技巧/"/>
 
 
 
 
 
-  <title>Ubuntu16.04安装docker | 昊'blog</title>
+  <title>Ubuntu 小技巧 | 昊'blog</title>
   
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/Ubuntu16.04安装docker/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/03/Ubuntu-小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨昊">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu16.04安装docker</h1>
+          <h1 class="post-title" itemprop="name headline">Ubuntu 小技巧</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T23:34:39+08:00">
-                2018-10-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-03T10:54:31+08:00">
+                2018-09-03
               </time>
             
 
@@ -317,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/docker/" itemprop="url" rel="index">
-                    <span itemprop="name">docker</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -340,6 +340,10 @@
           
 
           
+              <div class="post-description">
+                  Ubuntu实用小技巧
+              </div>
+          
 
         </div>
       </header>
@@ -354,60 +358,16 @@
       
 
       
-        <p>本文开发环境为Ubuntu16.04 LTS 64位系统，通过apt的docker官方源安装最新的Docker CE(Community Edition)，即Docker社区版。<br><a id="more"></a></p>
-<p>针对Ubuntu Trusty, Wily, and Xenial，推荐安装<code>linux-image-extra-*</code>内核包，<code>linux-image-extra-*</code>包允许你使用aufs存储驱动</p>
-<ul>
-<li><p>更新包管理器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装推荐包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-image-extra-$(uname -r) \</span><br><span class="line">    linux-image-extra-virtual</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h2><p>1.卸载旧版本docker</p>
-<ul>
-<li>由于apt官方库里的docker版本可能比较旧，所以先卸载可能存在的旧版本<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge docker docker-engine docker.io</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>2.更新系统软件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
-<p>3.安装依赖包，使apt可以通过HTTPS使用存储库(repository)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apt-transport-https ca-certificates \</span><br><span class="line">    curl software-properties-common</span><br></pre></td></tr></table></figure></p>
-<p>4.添加Docker官方GPG密钥<br>执行该命令时，如遇到长时间没有响应说明网络连接不到docker网站，需要使用代理进行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \</span><br><span class="line">    sudo apt-key add -</span><br></pre></td></tr></table></figure></p>
-<p>显示OK,表示添加成功.</p>
-<p>5.添加仓库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">   <span class="string">"deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span></span><br><span class="line"><span class="string">   <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">   stable"</span></span><br></pre></td></tr></table></figure></p>
-<p>6.再次更新apt索引<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
-<p>7.安装docker</p>
-<ul>
-<li><p>查看可用版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache madison docker-ce</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装指定版本 <code>&lt;VERSION&gt;</code>为版本号</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce=&lt;VERSION&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装最新版Docker CE</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>8.查看docker版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure></p>
-<h2 id="验证Docker"><a href="#验证Docker" class="headerlink" title="验证Docker"></a>验证Docker</h2><p>显示出版本信息，即安装成功。</p>
-<ul>
-<li><p>查看docker服务是否启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker status</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>若未启动，则启动docker服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>确认docker已被正确安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这个命令下载一个测试图片并且在容器(container)中运行，然后容器container运行，打印出相关信息，说明安装成功</p>
-<h2 id="创建docker-group"><a href="#创建docker-group" class="headerlink" title="创建docker group"></a>创建docker group</h2><p>docker进程(daemon)绑定在Unix套接字(socket)，而不是TCP端口(port)，由于Unix默认socket权限归root用户所有，其他用户可以通过sudo访问. 由此, docker进程通常使用root用户运行.</p>
-<p>为了避免每次使用docker命令都不得不使用sudo, 创建名为docker的Unix group并add users to it. 当docker daemon 开始,docker group就会拥有Unix socket 的读写权限（read/writable）.</p>
-<p>为docker group 添加用户user<br>1.使用具有sudo权限的用户登录Ubuntu<br>2.创建docker group<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br></pre></td></tr></table></figure></p>
-<p>3.添加登录用户到docker group用户组中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a <span class="variable">$USER</span> docker</span><br></pre></td></tr></table></figure></p>
-<p>4.更新用户组<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newgrp docker</span><br></pre></td></tr></table></figure></p>
-<p>5.测试docker命令不用sudo是否可以正常使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure></p>
-
+        <h2 id="测网速"><a href="#测网速" class="headerlink" title="测网速"></a>测网速</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">speedtest-cli</span><br></pre></td></tr></table></figure>
+<h2 id="检测丢包率"><a href="#检测丢包率" class="headerlink" title="检测丢包率"></a>检测丢包率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtr -r -c 30 -s 1024 www.baidu.com</span><br></pre></td></tr></table></figure>
+<p>向百度发送数据包 每秒30个  每个1024个字节</p>
+<p>mtr -h 提供帮助命令<br>mtr -v 显示mtr的版本信息<br>mtr -r 已报告模式显示<br>mtr -c 设置每秒发送数据包的数量<br>mtr -s 用来指定ping数据包的大小<br>mtr -n no-dns不对IP地址做域名解析<br>mtr -a 来设置发送数据包的IP地址 这个对一个主机由多个IP地址是有用的<br>mtr -i 使用这个参数来设置ICMP返回之间的要求默认是1秒<br>mtr -4 IPv4<br>mtr -6 IPv6</p>
+<h2 id="依赖问题"><a href="#依赖问题" class="headerlink" title="依赖问题"></a>依赖问题</h2><p>使用dpkg -i   *.deb 的时候出现依赖没有安装<br>使用apt-get -f -y install  解决依赖问题后再执行dpkg安装deb包</p>
+<h2 id="最小化"><a href="#最小化" class="headerlink" title="最小化"></a>最小化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsettings <span class="built_in">set</span> org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ launcher-minimize-window <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>点击Launcher 图标最小化</p>
+<h2 id="禁止开机自启动"><a href="#禁止开机自启动" class="headerlink" title="禁止开机自启动"></a>禁止开机自启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> mysql</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d mysql <span class="built_in">disable</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -426,8 +386,6 @@
           
             <a href="/tags/Ubuntu/" rel="tag"> <i class="fa fa-tag"></i>Ubuntu</a>
           
-            <a href="/tags/docker/" rel="tag"> <i class="fa fa-tag"></i>docker</a>
-          
         </div>
       
 
@@ -439,15 +397,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/11/Ubuntu16.04 开机黑屏/" rel="next" title="Ubuntu16.04 开机黑屏">
-                <i class="fa fa-chevron-left"></i> Ubuntu16.04 开机黑屏
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/11/Ubuntu16.04 开机黑屏/" rel="prev" title="Ubuntu16.04 开机黑屏">
+                Ubuntu16.04 开机黑屏 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -514,7 +472,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">杨昊</p>
-              <p class="site-description motion-element" itemprop="description">在奋斗的路上，无论晴天雨天，都是风景</p>
+              <p class="site-description motion-element" itemprop="description">学历代表过去，能力代表现在，学习力代表将来</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -524,7 +482,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -535,7 +493,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -546,7 +504,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -579,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker安装"><span class="nav-text">docker安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证Docker"><span class="nav-text">验证Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建docker-group"><span class="nav-text">创建docker group</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#测网速"><span class="nav-text">测网速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测丢包率"><span class="nav-text">检测丢包率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖问题"><span class="nav-text">依赖问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小化"><span class="nav-text">最小化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止开机自启动"><span class="nav-text">禁止开机自启动</span></a></li></ol></div>
             
 
           </div>
@@ -599,7 +557,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -611,11 +569,7 @@
 <!--
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-
-
-  <span class="post-meta-divider">|</span>
 
 
 

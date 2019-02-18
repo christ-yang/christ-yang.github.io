@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="昊&#39;blog">
 <meta property="og:description" content="Ubuntu 16.04环境，实践docker">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-04T16:07:19.300Z">
+<meta property="og:updated_time" content="2019-02-03T03:11:25.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker实践笔记二">
 <meta name="twitter:description" content="Ubuntu 16.04环境，实践docker">
@@ -375,7 +375,7 @@
 <h2 id="启动MySQL容器（设置密码、端口映射）"><a href="#启动MySQL容器（设置密码、端口映射）" class="headerlink" title="启动MySQL容器（设置密码、端口映射）"></a>启动MySQL容器（设置密码、端口映射）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name 实例名称 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=密码 -d mysql:5.7.23</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>查看已经运行的docker镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pa -a</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>连接到镜像中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 镜像实例名 bash</span><br></pre></td></tr></table></figure>
@@ -519,7 +519,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
