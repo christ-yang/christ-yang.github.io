@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="docker常用命令整理">
+<meta name="description" content="docker常用命令整理 docker 容器生命周期管理docker rundocker run:创建一个新容器并运行1docker run --name mysql2 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=密码 -d mysql:5.7 以mysql:5.7镜像启动一个容器，指定容器名称为mysql2 映射端口号设置密码，并在后台运行 参数：1234567891">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker命令使用详解">
 <meta property="og:url" content="http://yoursite.com/2018/10/01/Docker命令使用详解/index.html">
 <meta property="og:site_name" content="昊&#39;blog">
-<meta property="og:description" content="docker常用命令整理">
+<meta property="og:description" content="docker常用命令整理 docker 容器生命周期管理docker rundocker run:创建一个新容器并运行1docker run --name mysql2 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=密码 -d mysql:5.7 以mysql:5.7镜像启动一个容器，指定容器名称为mysql2 映射端口号设置密码，并在后台运行 参数：1234567891">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-05T15:29:32.178Z">
+<meta property="og:updated_time" content="2019-03-02T06:00:39.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker命令使用详解">
-<meta name="twitter:description" content="docker常用命令整理">
+<meta name="twitter:description" content="docker常用命令整理 docker 容器生命周期管理docker rundocker run:创建一个新容器并运行1docker run --name mysql2 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=密码 -d mysql:5.7 以mysql:5.7镜像启动一个容器，指定容器名称为mysql2 映射端口号设置密码，并在后台运行 参数：1234567891">
 
 
 
@@ -354,7 +354,7 @@
       
 
       
-        <p>docker常用命令整理<br><a id="more"></a></p>
+        <p>docker常用命令整理</p>
 <h1 id="docker-容器生命周期管理"><a href="#docker-容器生命周期管理" class="headerlink" title="docker 容器生命周期管理"></a>docker 容器生命周期管理</h1><h2 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h2><p><strong>docker run:创建一个新容器并运行</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql2 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=密码 -d mysql:5.7</span><br></pre></td></tr></table></figure></p>
 <p>以mysql:5.7镜像启动一个容器，指定容器名称为mysql2 映射端口号设置密码，并在后台运行</p>
 <p>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项</span><br><span class="line">-d: 后台运行容器，并返回容器ID</span><br><span class="line">-i: 以交互模式运行容器，通常与 -t 同时使用</span><br><span class="line">-p: 端口映射，格式为：主机(宿主)端口:容器端口</span><br><span class="line">-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用</span><br><span class="line">--name=&quot;nginx-lb&quot;: 为容器指定一个名称</span><br><span class="line">--dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致</span><br><span class="line">--dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致</span><br><span class="line">-h &quot;mars&quot;: 指定容器的hostname</span><br><span class="line">-e username=&quot;ritchie&quot;: 设置环境变量</span><br><span class="line">--env-file=[]: 从指定文件读入环境变量</span><br><span class="line">--cpuset=&quot;0-2&quot; or --cpuset=&quot;0,1,2&quot;: 绑定容器到指定CPU运行</span><br><span class="line">-m :设置容器使用内存最大值</span><br><span class="line">--net=&quot;bridge&quot;: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型</span><br><span class="line">--link=[]: 添加链接到另一个容器</span><br><span class="line">--expose=[]: 开放一个端口或一组端口</span><br></pre></td></tr></table></figure></p>
@@ -518,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -529,7 +529,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -540,7 +540,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
