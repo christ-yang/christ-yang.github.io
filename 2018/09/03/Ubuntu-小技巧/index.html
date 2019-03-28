@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="昊&#39;blog">
 <meta property="og:description" content="Ubuntu实用小技巧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-13T13:11:05.607Z">
+<meta property="og:updated_time" content="2019-03-28T13:12:27.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 小技巧">
 <meta name="twitter:description" content="Ubuntu实用小技巧">
@@ -371,6 +371,9 @@
 <h2 id="禁止开机自启动"><a href="#禁止开机自启动" class="headerlink" title="禁止开机自启动"></a>禁止开机自启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> mysql</span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d mysql <span class="built_in">disable</span></span><br></pre></td></tr></table></figure>
+<h2 id="dpkg-和-apt-get损坏修复"><a href="#dpkg-和-apt-get损坏修复" class="headerlink" title="dpkg 和 apt-get损坏修复"></a>dpkg 和 apt-get损坏修复</h2><p>使用apt-get 或者dpkg安装包时，出现以下报错<br><code>subprocess installed post-installation script returned error exit status 10</code></p>
+<p>解决办法：<br>到 <code>/var/lib/dpkg/info</code> 目录下，删除以上出现包名字开头的文件后，执行 <code>sudo apt-get -f install</code></p>
+
       
     </div>
     
@@ -544,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#测网速"><span class="nav-text">测网速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测丢包率"><span class="nav-text">检测丢包率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖问题"><span class="nav-text">依赖问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小化"><span class="nav-text">最小化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止开机自启动"><span class="nav-text">禁止开机自启动</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#测网速"><span class="nav-text">测网速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测丢包率"><span class="nav-text">检测丢包率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖问题"><span class="nav-text">依赖问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小化"><span class="nav-text">最小化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止开机自启动"><span class="nav-text">禁止开机自启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dpkg-和-apt-get损坏修复"><span class="nav-text">dpkg 和 apt-get损坏修复</span></a></li></ol></div>
             
 
           </div>
