@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="昊&#39;blog">
 <meta property="og:description" content="Ubuntu实用小技巧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-28T13:12:27.031Z">
+<meta property="og:updated_time" content="2019-03-28T13:16:19.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 小技巧">
 <meta name="twitter:description" content="Ubuntu实用小技巧">
@@ -358,7 +358,8 @@
       
 
       
-        <p>#依赖问题<br>使用 <code>dpkg -i   *.deb</code> 的时候出现依赖没有安装<br>使用 <code>apt-get -f -y install</code>  解决依赖问题后再执行dpkg安装deb包</p>
+        <p>在此记录我在使用 Ubuntu 16.04的过程中出现的问题，及解决方法</p>
+<p>#依赖问题<br>使用 <code>dpkg -i   *.deb</code> 的时候出现依赖没有安装<br>使用 <code>apt-get -f -y install</code>  解决依赖问题后再执行dpkg安装deb包</p>
 <p>Error while loading shared libraries: libgthread-2.0.so.0<br>Step 1: Find the package that includes this library<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -S libgthread-2.0.so.0</span><br></pre></td></tr></table></figure></p>
 <p>libglib2.0-0:amd64: /usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0<br>Step 2: Install 32 bit version of the same so add i386 instead of amd 64.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libglib2.0-0:i386</span><br></pre></td></tr></table></figure></p>
 <h2 id="测网速"><a href="#测网速" class="headerlink" title="测网速"></a>测网速</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">speedtest-cli</span><br></pre></td></tr></table></figure>
