@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="昊&#39;blog">
 <meta property="og:description" content="Ubuntu实用小技巧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-28T13:16:19.324Z">
+<meta property="og:updated_time" content="2019-11-30T14:25:28.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu 小技巧">
 <meta name="twitter:description" content="Ubuntu实用小技巧">
@@ -374,6 +374,15 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d mysql <span class="built_in">disable</span></span><br></pre></td></tr></table></figure>
 <h2 id="dpkg-和-apt-get损坏修复"><a href="#dpkg-和-apt-get损坏修复" class="headerlink" title="dpkg 和 apt-get损坏修复"></a>dpkg 和 apt-get损坏修复</h2><p>使用apt-get 或者dpkg安装包时，出现以下报错<br><code>subprocess installed post-installation script returned error exit status 10</code></p>
 <p>解决办法：<br>到 <code>/var/lib/dpkg/info</code> 目录下，删除以上出现包名字开头的文件后，执行 <code>sudo apt-get -f install</code></p>
+<p><code>E: Sub-process /usr/bin/dpkg returned an error code (1)</code><br>解决办法：</p>
+<ol>
+<li>sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old //现将info文件夹更名</li>
+<li>sudo mkdir /var/lib/dpkg/info //再新建一个新的info文件夹</li>
+<li>sudo apt-get update,再$sudoapt-get -f install</li>
+<li>sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old //执行完上一步操作后会在新的info文件夹下生成一些文件，现将这些文件全部移到info_old文件夹下</li>
+<li>sudo rm -rf /var/lib/dpkg/info //把自己新建的info文件夹删掉</li>
+<li>sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info //把以前的info文件夹重新改回名字 到此问题顺利解决</li>
+</ol>
 
       
     </div>
@@ -493,7 +502,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -504,7 +513,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -515,7 +524,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

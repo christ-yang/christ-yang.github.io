@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Redis," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Redis 特点Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用。Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。Redis支持数据的备份，即master-slave模式的数据备份。 Redis 优势性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="http://yoursite.com/2019/10/02/Redis/index.html">
+<meta property="og:site_name" content="昊&#39;blog">
+<meta property="og:description" content="Redis 特点Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用。Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。Redis支持数据的备份，即master-slave模式的数据备份。 Redis 优势性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-17T07:25:03.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis">
+<meta name="twitter:description" content="Redis 特点Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用。Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。Redis支持数据的备份，即master-slave模式的数据备份。 Redis 优势性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/02/Redis/"/>
+
+
+
+
+
+  <title>Redis | 昊'blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/hao-young" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">昊'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/02/Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨昊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="昊'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-02T10:11:31+08:00">
+                2019-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/缓存/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Redis-特点"><a href="#Redis-特点" class="headerlink" title="Redis 特点"></a>Redis 特点</h1><p>Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用。<br>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。<br>Redis支持数据的备份，即master-slave模式的数据备份。</p>
+<h1 id="Redis-优势"><a href="#Redis-优势" class="headerlink" title="Redis 优势"></a>Redis 优势</h1><p>性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。<br>丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。<br>原子 – Redis的所有操作都是原子性的，同时Redis还支持对几个操作全并后的原子性执行。<br>丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</p>
+<p>Redis value的数据结构 String、Hash、List、Set、ZSet</p>
+<h1 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String(字符串)"></a>String(字符串)</h1><ul>
+<li>存储最简单的key-value结构</li>
+<li>value可以是字符串、整数或者浮点型</li>
+<li>可以对整个字符串或者字符串的一部分执行操作</li>
+<li>对整数和浮点数执行自增或自减操作</li>
+</ul>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>常规key-value缓存应用</li>
+<li>分布式id生成器</li>
+</ul>
+<h1 id="list-列表"><a href="#list-列表" class="headerlink" title="list(列表)"></a>list(列表)</h1><ul>
+<li>一个链表，链表上的每各节点都包含了一个字符串，字符串可以重复</li>
+<li>可以从链表的两端推入或者拉出元素</li>
+<li>根据偏移量对链表进行修剪</li>
+<li>读取单个或者多个元素</li>
+<li>根据值查找或者移除元素</li>
+</ul>
+<h2 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>最新消息排行等功能</li>
+<li>消息队列</li>
+<li>关注列表，粉丝列表</li>
+</ul>
+<h1 id="set-集合"><a href="#set-集合" class="headerlink" title="set(集合)"></a>set(集合)</h1><ul>
+<li>包含字符串的无序收集器，并且被包含的每个字符串都是独一无二，各不相同的，即不能重复</li>
+<li>可以添加、获取、移除单个元素</li>
+<li>检查一个元素是否存在于集合中</li>
+<li>计算交集、并集、差集</li>
+<li>从集合里面随机获取元素</li>
+</ul>
+<h2 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>共同好友，共同喜好，二度好友</li>
+<li>统计网站访问IP（利用唯一性，统计访问网站的所有独立IP）</li>
+<li>好友推荐（好友推荐时，根据tag求交集，大于某个阈值就可以推荐）</li>
+</ul>
+<h1 id="hash-散列"><a href="#hash-散列" class="headerlink" title="hash(散列)"></a>hash(散列)</h1><ul>
+<li>是一个string类型的field和value的映射表</li>
+<li>包含键值对的无序散列表，键不能重复</li>
+<li>可以添加、获取、移除单个键值对</li>
+<li>获取所有键值对<h2 id="使用场景-3"><a href="#使用场景-3" class="headerlink" title="使用场景"></a>使用场景</h2></li>
+<li>hash特别适合用于存储对象</li>
+<li>存储用户信息（能单独修改用户某一属性信息）</li>
+</ul>
+<h1 id="zset-有序集合"><a href="#zset-有序集合" class="headerlink" title="zset(有序集合)"></a>zset(有序集合)</h1><ul>
+<li>有序集合的键被称为成员，每个成员都是各不相同的</li>
+<li>而有序集合的值被称为分值，分值必须为浮点数</li>
+<li>有序集合是字符串成员与浮点数分值之间的有序映射，元素的排列顺序由分值的大小决定</li>
+<li>可以添加、获取、删除单个元素</li>
+<li>根据分值范围或者成员来获取元素</li>
+<li>有序集合是redis里面唯一一个既可以根据成员访问元素（这一点和散列一样），又可以根据分值以及分值的排列顺序来访问元素的结构<h2 id="使用场景-4"><a href="#使用场景-4" class="headerlink" title="使用场景"></a>使用场景</h2></li>
+<li>排行榜</li>
+<li>带权重的消息队列</li>
+</ul>
+<h1 id="Redis-keys命令"><a href="#Redis-keys命令" class="headerlink" title="Redis keys命令"></a>Redis keys命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">del (key)   用于在key存在是删除key</span><br><span class="line"></span><br><span class="line">dump (key)   序列化给定的key,并返回被序列化的值</span><br><span class="line"></span><br><span class="line">exists (key)   检查给定的key是否存在</span><br><span class="line"></span><br><span class="line">expire (key seconds)  为给定key设置过期时间</span><br><span class="line"></span><br><span class="line">expire (key timestamp)    EXPIREAT 的作用和 EXPIRE 类似，都用于为 key 设置过期时间。 不同在于 EXPIREAT 命令接受的时间参数是 UNIX 时间戳(unix timestamp)</span><br><span class="line"></span><br><span class="line">pexpire (key milliseconds) 设置 key 的过期时间以毫秒计</span><br><span class="line"></span><br><span class="line">pexpiret (key milliseconds-timestamp)   设置 key 过期时间的时间戳(unix timestamp) 以毫秒计</span><br><span class="line"></span><br><span class="line">keys (pattern)   查找所有符合给定模式( pattern)的 key</span><br><span class="line"></span><br><span class="line">move (key dbindex)   将当前数据库的 key 移动到有dbindex索引的数据库</span><br><span class="line"></span><br><span class="line">persist (key) 移除 key 的过期时间，key 将持久保持</span><br><span class="line"></span><br><span class="line">pttl (key) 以毫秒为单位返回 key 的剩余的过期时间。</span><br><span class="line"></span><br><span class="line">ttl (key) 以秒为单位，返回给定 key 的剩余生存时间(TTL, time to live)</span><br><span class="line"></span><br><span class="line">rename (key newkey) 修改 key 的名称</span><br><span class="line"></span><br><span class="line">renamenx (key newkey) 仅当 newkey 不存在时，将 key 改名为 newkey </span><br><span class="line"></span><br><span class="line">type (key) 返回key所储存的值的类型</span><br><span class="line"></span><br><span class="line">dbsize  返回当前数据库中的key的数目</span><br><span class="line"></span><br><span class="line">flushdb  删除当前选择数据库中所有key</span><br><span class="line"></span><br><span class="line">flushall  删除所有数据库中的所有key</span><br></pre></td></tr></table></figure>
+<h1 id="String-操作命令"><a href="#String-操作命令" class="headerlink" title="String 操作命令"></a>String 操作命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">set (key value)  设置给定key的value值</span><br><span class="line"></span><br><span class="line">get (key)  获取指定key的值</span><br><span class="line"></span><br><span class="line">setnx (key value)  只有在key不存在时设置key的值</span><br><span class="line"></span><br><span class="line">mset (key1 value1 key2 value2 ... keyn valuen)  同时设置一个或多个key-value值</span><br><span class="line"></span><br><span class="line">msetnx (key1 value1 key2 value2 ... keyn valuen) 所有给定 key 都不存在时，同时设置一个或多个 key-value 对</span><br><span class="line"></span><br><span class="line">setex (key timeout value) 给指定的key设置值及过期时间,单位：秒</span><br><span class="line"></span><br><span class="line">psetex (key milliseconds value) 给指定的key设置值及过期时间,单位：毫秒</span><br><span class="line"></span><br><span class="line">getrange (key start end) 获取存储在指定key中字符串的子字符串，字符串的截取范围由 start 和 end 两个偏移量决定(包括 start 和 end 在内)</span><br><span class="line"></span><br><span class="line">incr (key) 将key中存储的数字值增一，如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 incr 操作，如果值包含错误的类型，或字符串类型的值不能表示为数字，那么返回一个错误，本操作的值限制在 64 位(bit)有符号数字表示之内</span><br><span class="line"></span><br><span class="line">decr (key) 将key中存储的数字值减一，如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 decr 操作，如果值包含错误的类型，或字符串类型的值不能表示为数字，那么返回一个错误，本操作的值限制在 64 位(bit)有符号数字表示之内</span><br><span class="line"></span><br><span class="line">incrby (key incr_amount) 将 key 中储存的数字加上指定的增量值,如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 incrby 命令,如果值包含错误的类型，或字符串类型的值不能表示为数字，那么返回一个错误,本操作的值限制在 64 位(bit)有符号数字表示之内</span><br><span class="line"></span><br><span class="line">decrby (key decr_amount) 将 key 所储存的值减去指定的减量值,</span><br><span class="line">如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 decrby 操作,如果值包含错误的类型，或字符串类型的值不能表示为数字，那么返回一个错误,本操作的值限制在 64 位(bit)有符号数字表示之内</span><br><span class="line"></span><br><span class="line">incrbyfloat (key incr_amount) 为 key 中所储存的值加上指定的浮点数增量值,如果 key 不存在，那么 INCRBYFLOAT 会先将 key 的值设为 0 ，再执行加法操作</span><br><span class="line"></span><br><span class="line">strlen (key)  获取key所存储字符串值的长度，当 key 储存的不是字符串值时，返回一个错误</span><br><span class="line"></span><br><span class="line">setrange (key offset value) 用指定的字符串覆盖给定 key 所储存的字符串值，覆盖的位置从偏移量 offset 开始</span><br><span class="line"></span><br><span class="line">append (key value)  为指定的 key 追加值,如果 key 已经存在并且是一个字符串， APPEND 命令将 value 追加到 key 原来的值的末尾如果 key 不存在， APPEND 就简单地将给定 key 设为 value ，就像执行 SET key value 一样</span><br></pre></td></tr></table></figure>
+<h1 id="list-操作命令"><a href="#list-操作命令" class="headerlink" title="list 操作命令"></a>list 操作命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">rpush (key value1 ... valuen) 用于将一个或多个值插入到列表的尾部(最右边)</span><br><span class="line"></span><br><span class="line">lindex 通过索引获取列表中的元素，也可以使用负数下标，以 -1 表示列表的最后一个元素，-2 表示列表的倒数第二个元素，以此类推</span><br><span class="line"></span><br><span class="line">lrange (key start end)  返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推</span><br><span class="line"></span><br><span class="line">rpoplpush (source_key destination_key)  移除列表的最后一个元素，并将该元素添加到另一个列表并返回</span><br><span class="line"></span><br><span class="line">blpop (list1 list2 ... listn timeout)  移出并获取列表的第一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止</span><br><span class="line"></span><br><span class="line">brpop (list1 list2 ... listn timeout) 移出并获取列表的最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止</span><br><span class="line"></span><br><span class="line">brpoplpush (list another_list timeout)  从列表中弹出一个值，将弹出的元素插入到另外一个列表中并返回它； 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止</span><br><span class="line"></span><br><span class="line">lrem (key count value)  根据参数 COUNT 的值，移除列表中与参数 VALUE 相等的元素。COUNT 的值可以是以下几种：</span><br><span class="line">count &gt; 0 : 从表头开始向表尾搜索，移除与 VALUE 相等的元素，数量为 COUNT ,count &lt; 0 : 从表尾开始向表头搜索，移除与 VALUE 相等的元素，数量为 COUNT 的绝对值, count = 0 : 移除表中所有与 VALUE 相等的值</span><br><span class="line"></span><br><span class="line">llen (key) 用于返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 ,如果 key 不是列表类型，返回一个错误</span><br><span class="line"></span><br><span class="line">ltrim (key start stop) 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。下标 0 表示列表的第一个元素，以 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推</span><br><span class="line"></span><br><span class="line">lpop (key) 用于移除并返回列表的第一个元素</span><br><span class="line"></span><br><span class="line">rpop (key) 用于移除并返回列表的最后一个元素</span><br><span class="line"></span><br><span class="line">lpushx (key value1 value2 ... valuen) 将一个或多个值插入到已存在的列表头部，列表不存在时操作无效</span><br><span class="line"></span><br><span class="line">rpushx (key value1 value2 ... valuen) 将一个或多个值插入到已存在的列表尾部(最右边)，列表不存在时操作无效</span><br><span class="line"></span><br><span class="line">linsert (key before|after ecisting_value new_value) 用于在列表的元素前或者后插入元素。当指定元素不存在于列表中时，不执行任何操作。当列表不存在时，被视为空列表，不执行任何操作。如果 key 不是列表类型，返回一个错误</span><br><span class="line"></span><br><span class="line">lset (key index value)  通过索引来设置元素的值,当索引参数超出范围，或对一个空列表进行 lset 时，返回一个错误</span><br></pre></td></tr></table></figure>
+<h1 id="hash-操作命令"><a href="#hash-操作命令" class="headerlink" title="hash 操作命令"></a>hash 操作命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">hset (key field value)  为哈希表中的字段赋值，如果哈希表不存在，一个新的哈希表被创建并进行 HSET 操作，如果字段已经存在于哈希表中，旧值将被覆盖</span><br><span class="line"></span><br><span class="line">hsetnx (key field value)  为哈希表中不存在的的字段赋值 。如果哈希表不存在，一个新的哈希表被创建并进行 HSET 操作。如果字段已经存在于哈希表中，操作无效。如果 key 不存在，一个新哈希表被创建并执行 HSETNX 命令</span><br><span class="line"></span><br><span class="line">hget (key field_name) 用于返回哈希表中指定字段的值</span><br><span class="line"></span><br><span class="line">hgetall (key) 返回哈希表中所有的字段和值，返回值中紧跟每个字段名(field name)之后是字段的值(value)，所以返回值的长度是哈希表大小的两倍</span><br><span class="line"></span><br><span class="line">hmset (key field1 value1 filed2 value2 ... filedn valuen)  同时将多个field-value(字段-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的字段，如果哈希表不存在，会创建一个空哈希表，并执行 HMSET 操作</span><br><span class="line"></span><br><span class="line">hmget (key field1 field2 ... fieldn)  用于返回哈希表中一个或多个给定字段的值，如果不存在，返回nil值</span><br><span class="line"></span><br><span class="line">hexists (key field)  查询hash表中指定字段是否存在</span><br><span class="line"></span><br><span class="line">hincrby (key field incr_by_number) 用于为哈希表中的字段值加上指定增量值。增量也可以为负数，相当于对指定字段进行减法操作。如果哈希表的 key 不存在，一个新的哈希表被创建并执行 hincrby 命令。如果指定的字段不存在，那么在执行命令前，字段的值被初始化为 0 。对一个储存字符串值的字段执行 HINCRBY 命令将造成一个错误</span><br><span class="line"></span><br><span class="line">hincrbyfloat (key field incr_by_number)  用于为哈希表中的字段值加上指定浮点数增量值.如果指定的字段不存在，那么在执行命令前，字段的值被初始化为 0 </span><br><span class="line"></span><br><span class="line">hlen (key)  获取哈希表中字段的数量</span><br><span class="line"></span><br><span class="line">hdel (key field1 field2 ... fieldn) 用于删除哈希表 key 中的一个或多个指定字段，不存在的字段将被忽略</span><br><span class="line"></span><br><span class="line">hvals (key)  返回哈希表所有字段的值</span><br><span class="line"></span><br><span class="line">hkeys (key)  获取哈希表中的所有字段名</span><br></pre></td></tr></table></figure>
+<h1 id="set-操作命令"><a href="#set-操作命令" class="headerlink" title="set 操作命令"></a>set 操作命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">sscan (key [match pattern] [count countnum]) 迭代集合键中的元素</span><br><span class="line"></span><br><span class="line">sadd (key value1 ... valuen) 将一个或多个元素加入到集合</span><br><span class="line"></span><br><span class="line">srem (key value1 ... valuen) 移除集合中的一个或多个成员元素，不存在的成员元素会被忽略</span><br><span class="line"></span><br><span class="line">smembers (key)  返回集合中的所有成员，不存在的集合可以视为空集合</span><br><span class="line"></span><br><span class="line">scard (key) 返回集合中的元素数量</span><br><span class="line"></span><br><span class="line">sismember (key value) 判断成员是否是集合成员</span><br><span class="line"></span><br><span class="line">sunion (key1 key2 ... keyn) 返回指定集合的并集</span><br><span class="line"></span><br><span class="line">sunionstore (destination_key key1 key2 ... keyn) 将给定集合的并集存储在指定的集合 destination 中</span><br><span class="line"></span><br><span class="line">sinter (key1 key2 ... keyn)  返回给定所有集合的交集，不存在的集合 key 被视为空集</span><br><span class="line"></span><br><span class="line">sinterstore (destination_key key1 key2 ... keyn) 将给定集合之间的交集存储在指定的集合中。如果指定的集合已经存在，则将其覆盖</span><br><span class="line"></span><br><span class="line">sdiff (key1 key2 ... keyn)  返回给定集合之间的差集</span><br><span class="line"></span><br><span class="line">sdiffstore (destination_key  key1 key2 ... keyn) 将给定集合之间的差集存储在指定的集合中。如果指定的集合 key 已存在，则会被覆盖</span><br><span class="line"></span><br><span class="line">spop (key) 用于移除并返回集合中的一个随机元素</span><br></pre></td></tr></table></figure>
+<h1 id="sorted-set-操作命令"><a href="#sorted-set-操作命令" class="headerlink" title="sorted set 操作命令"></a>sorted set 操作命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">zcard (key) 计算集合中元素的数量</span><br><span class="line"></span><br><span class="line">zrange (key start stop [withscores])  返回有序集合中指定区域内的成员，按成员分数值递增排序，下标参数 start 和 stop 都以 0 为底，也就是说，以 0 表示有序集第一个成员，以 1 表示有序集第二个成员，以此类推，你也可以使用负数下标，以 -1 表示最后一个成员</span><br><span class="line"></span><br><span class="line">zrevrange (key start stop [withscores])  返回有序集合中指定区域内的成员，按成员分数值递减排序，下标参数 start 和 stop 都以 0 为底，也就是说，以 0 表示有序集第一个成员，以 1 表示有序集第二个成员，以此类推，你也可以使用负数下标，以 -1 表示最后一个成员</span><br><span class="line"></span><br><span class="line">zadd (key score1 value1 score2 value2 ... scoren valuen)  将一个或多个成员元素及其分数值加入到有序集当中,分数值可以是整数值或双精度浮点数</span><br><span class="line"></span><br><span class="line">acount (key min max) 计算有序集合中指定分数区间的成员数量</span><br><span class="line"></span><br><span class="line">zscore (key member) 返回有序集中，成员的分数值</span><br><span class="line"></span><br><span class="line">zincrby (key increment member) 对有序集合中指定成员的分数加上增量 increment,分数值可以是整数值或双精度浮点数,可正可负</span><br><span class="line"></span><br><span class="line">zrem (key member1 ... membern)  移除有序集中的一个或多个成员，不存在的成员将被忽略</span><br><span class="line"></span><br><span class="line">zrangebyscore (key min max [withscores] [limit offset count])  返回有序集合中指定分数区间的成员列表。有序集成员按分数值递增(从小到大)次序排列,默认情况下，区间的取值使用闭区间 (小于等于或大于等于)，你也可以通过给参数前增加 ( 符号来使用可选的开区间 (小于或大于) 例：zrangebyscore zset (1 5    1&lt;score&lt;=5     zrangebyscore zset -inf +inf 显示整个有序集</span><br><span class="line"></span><br><span class="line">zremrangebyscore (key min max) 移除有序集中，指定分数（score）区间内的所有成员</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-benchmark -n 100000 -q    同时执行10万个请求测试性能</span><br></pre></td></tr></table></figure>
+<h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>RDB是Redis用来进行持久化的一种方式，是把当前内存中的数据集快照写入磁盘，也就是 Snapshot 快照（数据库中所有键值对数据）。恢复时是将快照文件直接读到内存里<br>触发方式：自动触发和手动触发<br>自动触发：在 redis.conf 配置文件中的 SNAPSHOTTING 下</p>
+<ul>
+<li>save：这里是用来配置触发 Redis的持久化条件，也就是什么时候将内存中的数据保存到硬盘。默认如下配置：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1：表示900 秒内如果至少有 1 个 key 的值变化，则保存</span><br><span class="line">save 300 10：表示300 秒内如果至少有 10 个 key 的值变化，则保存</span><br><span class="line">save 60 10000：表示60 秒内如果至少有 10000 个 key 的值变化，则保存</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当然如果你只是用Redis的缓存功能，不需要持久化，那么你可以注释掉所有的 save 行来停用保存功能。可以直接一个空字符串来实现停用：save “”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli config set save &quot; &quot;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>stop-writes-on-bgsave-error ：默认值为yes。当启用了RDB且最后一次后台保存数据失败，Redis是否停止接收数据。这会让用户意识到数据没有正确持久化到磁盘上，否则没有人会注意到灾难（disaster）发生了。如果Redis重启了，那么又可以重新开始接收数据了</li>
+<li>rdbcompression ；默认值是yes。对于存储到磁盘中的快照，可以设置是否进行压缩存储。如果是的话，redis会采用LZF算法进行压缩。如果你不想消耗CPU来进行压缩的话，可以设置为关闭此功能，但是存储在磁盘上的快照会比较大。</li>
+<li>rdbchecksum ：默认值是yes。在存储快照后，我们还可以让redis使用CRC64算法来进行数据校验，但是这样做会增加大约10%的性能消耗，如果希望获取到最大的性能提升，可以关闭此功能</li>
+<li>dbfilename ：设置快照的文件名，默认是 dump.rdb</li>
+<li>dir：设置快照文件的存放路径，这个配置项一定是个目录，而不能是文件名。使用上面的 dbfilename 作为保存的文件名<br>也就是说通过在配置文件中配置的 save 方式，当实际操作满足该配置形式时就会进行 RDB 持久化，将当前的内存快照保存在 dir 配置的目录中，文件名由配置的 dbfilename 决定<h3 id="恢复数据"><a href="#恢复数据" class="headerlink" title="恢复数据"></a>恢复数据</h3>将备份文件 (dump.rdb) 移动到 redis 安装目录并启动服务即可，redis就会自动加载文件数据至内存了。Redis 服务器在载入 RDB 文件期间，会一直处于阻塞状态，直到载入工作完成为止<h3 id="RDBDE的优势和劣势"><a href="#RDBDE的优势和劣势" class="headerlink" title="RDBDE的优势和劣势"></a>RDBDE的优势和劣势</h3>优势：</li>
+<li>RDB是一个非常紧凑(compact)的文件，它保存了redis 在某个时间点上的数据集。这种文件非常适合用于进行备份和灾难恢复。</li>
+<li>生成RDB文件的时候，redis主进程会fork()一个子进程来处理所有保存工作，主进程不需要进行任何磁盘IO操作。</li>
+<li>RDB 在恢复大数据集时的速度比 AOF 的恢复速度要快。</li>
+</ul>
+<p>劣势：</p>
+<ul>
+<li>RDB方式数据没办法做到实时持久化/秒级持久化。因为bgsave每次运行都要执行fork操作创建子进程，属于重量级操作(内存中的数据被克隆了一份，大致2倍的膨胀性需要考虑)，频繁执行成本过高(影响性能)</li>
+<li>RDB文件使用特定二进制格式保存，Redis版本演进过程中有多个格式的RDB版本，存在老版本Redis服务无法兼容新版RDB格式的问题(版本不兼容)</li>
+<li>在一定间隔时间做一次备份，所以如果redis意外down掉的话，就会丢失最后一次快照后的所有修改(数据有丢失)</li>
+</ul>
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><p>AOF是通过保存Redis服务器所执行的写命令来记录数据库状态</p>
+<h3 id="AOF配置"><a href="#AOF配置" class="headerlink" title="AOF配置"></a>AOF配置</h3><p>在 redis.conf 配置文件的 APPEND ONLY MODE 下：</p>
+<ul>
+<li>appendonly：默认值为no，也就是说redis 默认使用的是rdb方式持久化，如果想要开启 AOF 持久化方式，需要将 appendonly 修改为 yes。</li>
+<li>appendfilename ：aof文件名，默认是”appendonly.aof”</li>
+<li>appendfsync：aof持久化策略的配置；</li>
+</ul>
+<ol>
+<li>no表示不执行fsync，由操作系统保证数据同步到磁盘，速度最快，但是不太安全；</li>
+<li>always表示每次写入都执行fsync，以保证数据同步到磁盘，效率很低；</li>
+<li>everysec表示每秒执行一次fsync，可能会导致丢失这1s数据。通常选择 everysec ，兼顾安全性和效率。</li>
+</ol>
+<ul>
+<li>no-appendfsync-on-rewrite：在aof重写或者写入rdb文件的时候，会执行大量IO，此时对于everysec和always的aof模式来说，执行fsync会造成阻塞过长时间，no-appendfsync-on-rewrite字段设置为默认设置为no。如果对延迟要求很高的应用，这个字段可以设置为yes，否则还是设置为no，这样对持久化特性来说这是更安全的选择。   设置为yes表示rewrite期间对新写操作不fsync,暂时存在内存中,等rewrite完成后再写入，默认为no，建议yes。Linux的默认fsync策略是30秒。可能丢失30秒数据。默认值为no。</li>
+<li>auto-aof-rewrite-percentage：默认值为100。aof自动重写配置，当目前aof文件大小超过上一次重写的aof文件大小的百分之多少进行重写，即当aof文件增长到一定大小的时候，Redis能够调用bgrewriteaof对日志文件进行重写。当前AOF文件大小是上次日志重写得到AOF文件大小的二倍（设置为100）时，自动启动新的日志重写过程。</li>
+<li>auto-aof-rewrite-min-size：64mb。设置允许重写的最小aof文件大小，避免了达到约定百分比但尺寸仍然很小的情况还要重写。</li>
+<li>aof-load-truncated：aof文件可能在尾部是不完整的，当redis启动的时候，aof文件的数据被载入内存。重启可能发生在redis所在的主机操作系统宕机后，尤其在ext4文件系统没有加上data=ordered选项，出现这种现象  redis宕机或者异常终止不会造成尾部不完整现象，可以选择让redis退出，或者导入尽可能多的数据。如果选择的是yes，当截断的aof文件被导入的时候，会自动发布一个log给客户端然后load。如果是no，用户必须手动redis-check-aof修复AOF文件才可以。默认值为 yes。</li>
+</ul>
+<h3 id="开启AOF"><a href="#开启AOF" class="headerlink" title="开启AOF"></a>开启AOF</h3><p>将 redis.conf 的 appendonly 配置改为 yes 即可。<br>AOF 保存文件的位置和 RDB 保存文件的位置一样，都是通过 redis.conf 配置文件的 dir 配置,可以通过 config get dir 命令获取保存的路径</p>
+<h3 id="AOF文件恢复"><a href="#AOF文件恢复" class="headerlink" title="AOF文件恢复"></a>AOF文件恢复</h3><p>重启 Redis 之后就会进行 AOF 文件的载入。<br>异常修复命令：redis-check-aof –fix 进行修复</p>
+<h3 id="AOF重写"><a href="#AOF重写" class="headerlink" title="AOF重写"></a>AOF重写</h3><p>由于AOF持久化是Redis不断将写命令记录到 AOF 文件中，随着Redis不断的进行，AOF 的文件会越来越大，文件越大，占用服务器内存越大以及 AOF 恢复要求时间越长。为了解决这个问题，Redis新增了重写机制，当AOF文件的大小超过所设定的阈值时，Redis就会启动AOF文件的内容压缩，只保留可以恢复数据的最小指令集。可以使用命令 bgrewriteaof 来重写<br>AOF 文件重写并不是对原文件进行重新整理，而是直接读取服务器现有的键值对，然后用一条命令去代替之前记录这个键值对的多条命令，生成一个新的文件后去替换原来的 AOF 文件<br>    AOF 文件重写触发机制：通过 redis.conf 配置文件中的 auto-aof-rewrite-percentage：默认值为100，以及auto-aof-rewrite-min-size：64mb 配置，也就是说默认Redis会记录上次重写时的AOF大小，默认配置是当AOF文件大小是上次rewrite后大小的一倍且文件大于64M时触发。<br>这里再提一下，我们知道 Redis 是单线程工作，如果 重写 AOF 需要比较长的时间，那么在重写 AOF 期间，Redis将长时间无法处理其他的命令，这显然是不能忍受的。Redis为了克服这个问题，解决办法是将 AOF 重写程序放到子程序中进行，这样有两个好处：<br>1.子进程进行 AOF 重写期间，服务器进程（父进程）可以继续处理其他命令。<br>2.子进程带有父进程的数据副本，使用子进程而不是线程，可以在避免使用锁的情况下，保证数据的安全性<br>使用子进程解决了上面的问题，但是新问题也产生了：因为子进程在进行 AOF 重写期间，服务器进程依然在处理其它命令，这新的命令有可能也对数据库进行了修改操作，使得当前数据库状态和重写后的 AOF 文件状态不一致。<br>为了解决这个数据状态不一致的问题，Redis 服务器设置了一个 AOF 重写缓冲区，这个缓冲区是在创建子进程后开始使用，当Redis服务器执行一个写命令之后，就会将这个写命令也发送到 AOF 重写缓冲区。当子进程完成 AOF 重写之后，就会给父进程发送一个信号，父进程接收此信号后，就会调用函数将 AOF 重写缓冲区的内容都写到新的 AOF 文件中。<br>这样将 AOF 重写对服务器造成的影响降到了最低</p>
+<h3 id="AOF优缺点"><a href="#AOF优缺点" class="headerlink" title="AOF优缺点"></a>AOF优缺点</h3><p>优点：</p>
+<ol>
+<li>AOF 持久化的方法提供了多种的同步频率，即使使用默认的同步频率每秒同步一次，Redis 最多也就丢失 1 秒的数据而已。</li>
+<li>AOF 文件使用 Redis 命令追加的形式来构造，因此，即使 Redis 只能向 AOF 文件写入命令的片断，使用 redis-check-aof 工具也很容易修正 AOF 文件。</li>
+<li>AOF 文件的格式可读性较强，这也为使用者提供了更灵活的处理方式。例如，如果我们不小心错用了 FLUSHALL 命令，在重写还没进行时，我们可以手工将最后的 FLUSHALL 命令去掉，然后再使用 AOF 来恢复数据。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>对于具有相同数据的的 Redis，AOF 文件通常会比 RDF 文件体积更大。</li>
+<li>虽然 AOF 提供了多种同步的频率，默认情况下，每秒同步一次的频率也具有较高的性能。但在 Redis 的负载较高时，RDB 比 AOF 具好更好的性能保证。</li>
+<li>RDB 使用快照的形式来持久化整个 Redis 数据，而 AOF 只是将每次执行的命令追加到 AOF 文件中，因此从理论上说，RDB 比 AOF 方式更健壮。官方文档也指出，AOF 的确也存在一些 BUG，这些 BUG 在 RDB 没有存在。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"> <i class="fa fa-tag"></i>Redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/09/Lambda表达式/" rel="next" title="Lambda表达式">
+                <i class="fa fa-chevron-left"></i> Lambda表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">杨昊</p>
+              <p class="site-description motion-element" itemprop="description">学历代表过去，能力代表现在，学习力代表将来</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-特点"><span class="nav-text">Redis 特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-优势"><span class="nav-text">Redis 优势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-字符串"><span class="nav-text">String(字符串)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#list-列表"><span class="nav-text">list(列表)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景-1"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#set-集合"><span class="nav-text">set(集合)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景-2"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hash-散列"><span class="nav-text">hash(散列)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景-3"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zset-有序集合"><span class="nav-text">zset(有序集合)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景-4"><span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-keys命令"><span class="nav-text">Redis keys命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-操作命令"><span class="nav-text">String 操作命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#list-操作命令"><span class="nav-text">list 操作命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hash-操作命令"><span class="nav-text">hash 操作命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#set-操作命令"><span class="nav-text">set 操作命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sorted-set-操作命令"><span class="nav-text">sorted set 操作命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持久化"><span class="nav-text">持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB"><span class="nav-text">RDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复数据"><span class="nav-text">恢复数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDBDE的优势和劣势"><span class="nav-text">RDBDE的优势和劣势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF"><span class="nav-text">AOF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF配置"><span class="nav-text">AOF配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开启AOF"><span class="nav-text">开启AOF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF文件恢复"><span class="nav-text">AOF文件恢复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF重写"><span class="nav-text">AOF重写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF优缺点"><span class="nav-text">AOF优缺点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨昊</span>
+
+  
+</div>
+
+<!--
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+-->
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
