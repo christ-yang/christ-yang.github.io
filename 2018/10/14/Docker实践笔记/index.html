@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="昊&#39;blog">
 <meta property="og:description" content="Ubuntu 16.04环境，实践docker docker配置国内镜像地址在/etc/docker/目录下添加daemon.json文件，内容如下：123&amp;#123;&quot;registry-mirrors&quot;:[&quot;https://registry.docker-cn.com&quot;]&amp;#125; 然后重启docker daemon服务1sudo service docker restart 安装MySQL">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-02T06:00:29.800Z">
+<meta property="og:updated_time" content="2020-02-13T07:33:51.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker实践笔记二">
 <meta name="twitter:description" content="Ubuntu 16.04环境，实践docker docker配置国内镜像地址在/etc/docker/目录下添加daemon.json文件，内容如下：123&amp;#123;&quot;registry-mirrors&quot;:[&quot;https://registry.docker-cn.com&quot;]&amp;#125; 然后重启docker daemon服务1sudo service docker restart 安装MySQL">
@@ -384,7 +384,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql status</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>连接MySQL，设置root账号和密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'new_password'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'new_password'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>由于mysql中的root执行绑定在了localhost，因此需要对root进行授权</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to root@<span class="string">'%'</span> identified by <span class="string">'password'</span> with grant option;</span><br></pre></td></tr></table></figure>
@@ -440,8 +440,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/08/docker RabbitMQ/" rel="prev" title="rabbitMQ">
-                rabbitMQ <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/08/知识点/" rel="prev" title="知识点">
+                知识点 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -519,7 +519,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -530,7 +530,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -541,7 +541,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -594,7 +594,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
